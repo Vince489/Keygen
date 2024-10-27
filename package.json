@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "bip39": "^3.1.0",
+    "bs58": "^5.0.0",
+    "jest": "^29.7.0",
+    "tweetnacl": "^1.0.3"
+  }
+}
