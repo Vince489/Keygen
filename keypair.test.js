@@ -1,4 +1,3 @@
-// keypair.test.js
 const bs58 = require('bs58');
 const nacl = require('tweetnacl');
 const bip39 = require('bip39');
@@ -54,14 +53,14 @@ describe('Keypair class', () => {
   test('should sign a message with a private key', () => {
     const keypair = Keypair.generate();
     const message = 'Hello World';
-    const signature = Keypair.sign(keypair.privateKey, message);
+    const signature = keypair.sign(message); // Use instance's sign method
     expect(typeof signature).toBe('string');
   });
 
   test('should verify a valid signature', () => {
     const keypair = Keypair.generate();
     const message = 'Hello World';
-    const signature = Keypair.sign(keypair.privateKey, message);
+    const signature = keypair.sign(message); // Use instance's sign method
     const isValid = Keypair.verify(message, signature, keypair.publicKey);
     expect(isValid).toBe(true);
   });

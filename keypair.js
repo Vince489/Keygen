@@ -45,16 +45,12 @@ class Keypair {
   }
 
   // Sign a message
-  static sign(privateKey, message) {
-    try {
-      const messageData = new TextEncoder().encode(message);
-      const privateKeyData = bs58.decode(privateKey);
-      const signature = nacl.sign.detached(messageData, privateKeyData);
-      return bs58.encode(signature);
-    } catch (error) {
-      throw new Error('Failed to sign message: ' + error.message);
-    }
-  }
+  sign(message) {
+    const messageData = new TextEncoder().encode(message);
+    const privateKeyData = bs58.decode(this.privateKey);
+    const signature = nacl.sign.detached(messageData, privateKeyData);
+    return bs58.encode(signature);
+}
 
   // Verify a signature
   static verify(message, signature, publicKey) {
